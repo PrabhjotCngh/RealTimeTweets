@@ -8,7 +8,7 @@
 
 import UIKit
 import Swifter
-/*
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -60,4 +60,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
-*/
+

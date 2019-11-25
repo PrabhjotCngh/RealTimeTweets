@@ -34,12 +34,13 @@ class MapViewController: UIViewController {
     //private var viewModelMap = MapViewModel ()
     
     override func loadView() {
-           
+        DispatchQueue.main.async() {
+            // Show loader
+             ProgressHud.sharedIndicator.displayPrgressHud(on: self.view)
+        }
          //observeEvents()
         
          // Register to receive location notification
-         NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(_:)), name: NSNotification.Name(rawValue: "LocationUpdates"), object: nil)
-        
          NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(_:)), name: NSNotification.Name(rawValue: "updateMapWithStreamAPIData"), object: nil)
            
         // Set initilial camera position
@@ -58,22 +59,17 @@ class MapViewController: UIViewController {
        
     @objc func methodOfReceivedNotification(_ notification: NSNotification)  {
         if let dictInfo = notification.userInfo  as NSDictionary? {
-//               guard let setLatitude = dictInfo["lat"] as? Double, let setLongitude = dictInfo["long"] as? Double  else {
-//                   print("failed to get location")
-//                   return
-//               }
-                
             guard let liveTweetsData = dictInfo["APIResponse"] as? [ResponseModel] else {
                 print("no tweets data")
                 return
             }
                
-            print(liveTweetsData)
             self.setupClusterManager(populateData: liveTweetsData)
-            // Save location details in model, so that we can fetch these details in next step
-                
-            // self.intialiseCamerPosition(lat: setLatitude, long: setLongitude)
-            // viewModel.intialiseCall(requestParams: setRequest)
+            
+            DispatchQueue.main.async() {
+                // hide loader
+                ProgressHud.sharedIndicator.hideProgressHud(onView: self.view)
+            }
         }
     }
     
@@ -81,7 +77,7 @@ class MapViewController: UIViewController {
     func intialiseCamerPosition(lat: Double, long: Double) {
            
         let camera = GMSCameraPosition.camera(withLatitude: lat,
-                  longitude: long, zoom: 10)
+                  longitude: long, zoom: 7)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         self.view = mapView
            

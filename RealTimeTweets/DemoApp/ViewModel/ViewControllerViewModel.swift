@@ -12,6 +12,9 @@ class ViewControllerViewModel : NSObject{
     // Callback to reload the login screen.
     var reloadScreen: (_ success: Bool?, _ streamResponse: [ResponseModel]?, _ error: String?)->() = { _,_,_ in }
     
+    // Callback to pass data back to screen.
+    var reloadScreenWithPolygonData: (_ streamResponse: PolygonResponseModel?, _ error: String?)->() = { _,_ in }
+    
     // Method calls to inform the view model to login.
     func intialiseTwitterLoginCall(with RequestModel: loginAPIRequestModel, withViewController: UIViewController){
         
@@ -46,5 +49,33 @@ class ViewControllerViewModel : NSObject{
             
         }
       
+    }
+    
+    //MARK: - fetch polygons from users current location
+    func intialiseMethodToGetPolygon(with params: [String: Any])  {
+        
+        self.fetchPolygons(with: params) { (polygons, error) in
+            
+            guard let polygonValues = polygons  else {
+                self.reloadScreenWithPolygonData(nil,error)
+                return
+            }
+            
+            self.reloadScreenWithPolygonData(polygonValues,nil)
+            
+        }
+    }
+       
+    private func fetchPolygons(with params: [String: Any], completion: @escaping (_ polygonStr: PolygonResponseModel?, _ error: String?) -> ()) {
+         
+        NetworkManager().getPolygons(with: params) { (response, error) in
+            
+            guard let polygons = response else {
+                    completion(nil,error)
+                    return
+            }
+            
+            completion(polygons,nil)
+        }
     }
 }

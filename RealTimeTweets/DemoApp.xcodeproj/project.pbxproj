@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		950160B0238C030C004AA523 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950160AF238C030C004AA523 /* Helper.swift */; };
+		950160B2238C173C004AA523 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950160B1238C173C004AA523 /* Router.swift */; };
+		950160B4238C177B004AA523 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950160B3238C177B004AA523 /* EndPointType.swift */; };
+		950160B6238C1799004AA523 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950160B5238C1799004AA523 /* HTTPTask.swift */; };
+		950160B8238C17B7004AA523 /* WebAPIEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950160B7238C17B7004AA523 /* WebAPIEndPoints.swift */; };
 		95746A7C238AE23E001C6073 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95746A7A238AE23E001C6073 /* TweetTableViewCell.swift */; };
 		95746A7D238AE23E001C6073 /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95746A7B238AE23E001C6073 /* TweetTableViewCell.xib */; };
 		95CD57822389369700693A66 /* GMUClusterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CD57392389369700693A66 /* GMUClusterManager.m */; };
@@ -75,6 +80,11 @@
 
 /* Begin PBXFileReference section */
 		81289A1DA64CDA0E6D2391FC /* Pods-DemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp.debug.xcconfig"; path = "Target Support Files/Pods-DemoApp/Pods-DemoApp.debug.xcconfig"; sourceTree = "<group>"; };
+		950160AF238C030C004AA523 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		950160B1238C173C004AA523 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		950160B3238C177B004AA523 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
+		950160B5238C1799004AA523 /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
+		950160B7238C17B7004AA523 /* WebAPIEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIEndPoints.swift; sourceTree = "<group>"; };
 		95746A7A238AE23E001C6073 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		95746A7B238AE23E001C6073 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
 		95CD57392389369700693A66 /* GMUClusterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUClusterManager.m; sourceTree = "<group>"; };
@@ -399,6 +409,10 @@
 			isa = PBXGroup;
 			children = (
 				AE331E9E2388298200FD72DE /* NetworkManager.swift */,
+				950160B1238C173C004AA523 /* Router.swift */,
+				950160B3238C177B004AA523 /* EndPointType.swift */,
+				950160B5238C1799004AA523 /* HTTPTask.swift */,
+				950160B7238C17B7004AA523 /* WebAPIEndPoints.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -474,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				AE775BD62387E51400651FB8 /* LocationManager.swift */,
+				950160AF238C030C004AA523 /* Helper.swift */,
 			);
 			path = Extras;
 			sourceTree = "<group>";
@@ -682,6 +697,7 @@
 				95CD578E2389369700693A66 /* GMUGeometryRenderer.m in Sources */,
 				95CD57982389369700693A66 /* GMULineString.m in Sources */,
 				95CD578F2389369700693A66 /* GMUGeometryCollection.m in Sources */,
+				950160B2238C173C004AA523 /* Router.swift in Sources */,
 				95CD57842389369700693A66 /* GMUWrappingDictionaryKey.m in Sources */,
 				95CD579F238A45D200693A66 /* MapViewModel.swift in Sources */,
 				95CD57882389369700693A66 /* GMUDefaultClusterIconGenerator.m in Sources */,
@@ -692,13 +708,16 @@
 				95CD57822389369700693A66 /* GMUClusterManager.m in Sources */,
 				95CD578D2389369700693A66 /* GMUKMLParser.m in Sources */,
 				95CD579B2389369700693A66 /* GQTPointQuadTreeChild.m in Sources */,
+				950160B8238C17B7004AA523 /* WebAPIEndPoints.swift in Sources */,
 				95CD57852389369700693A66 /* GMUSimpleClusterAlgorithm.m in Sources */,
 				95746A7C238AE23E001C6073 /* TweetTableViewCell.swift in Sources */,
 				AE6333892386A8F700280B86 /* AppDelegate.swift in Sources */,
 				95CD578A2389369700693A66 /* GMUWeightedLatLng.m in Sources */,
 				AE331E982388260A00FD72DE /* ViewControllerViewModel.swift in Sources */,
 				95CD57A3238ABEC600693A66 /* TweetDetailViewModel.swift in Sources */,
+				950160B0238C030C004AA523 /* Helper.swift in Sources */,
 				95CD57A5238AC25800693A66 /* TweetDetailModel.swift in Sources */,
+				950160B4238C177B004AA523 /* EndPointType.swift in Sources */,
 				95CD57862389369700693A66 /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */,
 				95CD578C2389369700693A66 /* GMUHeatmapTileLayer.m in Sources */,
 				95CD57932389369700693A66 /* GMUFeature.m in Sources */,
@@ -709,6 +728,7 @@
 				95CD57992389369700693A66 /* GMUGeoJSONParser.m in Sources */,
 				95CD57832389369700693A66 /* GMUGridBasedClusterAlgorithm.m in Sources */,
 				95CD57892389369700693A66 /* GMUStaticCluster.m in Sources */,
+				950160B6238C1799004AA523 /* HTTPTask.swift in Sources */,
 				95CD579A2389369700693A66 /* GQTPointQuadTree.m in Sources */,
 				AE63338B2386A8F700280B86 /* SceneDelegate.swift in Sources */,
 				95CD579D238A451300693A66 /* MapViewController.swift in Sources */,
@@ -816,7 +836,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -870,7 +890,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -894,7 +914,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prabhjot.twitterDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/redblink/Desktop/DemoAppNew/Google-Maps-iOS-Utils/DemoApp-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/thakur/Documents/TwitterDemo/RealTimeTweets/Google-Maps-iOS-Utils/DemoApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -914,7 +934,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prabhjot.twitterDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/redblink/Desktop/DemoAppNew/Google-Maps-iOS-Utils/DemoApp-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/thakur/Documents/TwitterDemo/RealTimeTweets/Google-Maps-iOS-Utils/DemoApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

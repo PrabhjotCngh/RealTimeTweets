@@ -18,10 +18,8 @@ class LocationManager: NSObject {
     var startLocation: CLLocation!
     var lastLocation: CLLocation!
     var traveledDistance: Double = 0
-    var callOnce: Bool?
     
     func initializeLocationManager() {
-        callOnce = true
         locationManager = CLLocationManager()
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -44,20 +42,15 @@ class LocationManager: NSObject {
    
     private func notifyLocationAvailability(placemark: CLPlacemark, latLongs: CLLocation) {
         
-        guard let LMCity = placemark.locality, let LMState = placemark.administrativeArea, let LMCountryISOCode = placemark.isoCountryCode, let LMZipCode =  placemark.postalCode, let LMCountry =  placemark.country else {
+        guard let LMCity = placemark.locality else {
             print("no location details")
             return
         }
        
         do {
             
-            let latitude = currentLocation.coordinate.latitude
-            let longitude = currentLocation.coordinate.longitude
-            
-            let locationDetails = ["city": LMCity, "state": LMState, "isoCode": LMCountryISOCode, "zipCode": LMZipCode, "country": LMCountry, "lat": latitude, "long": longitude] as [String : Any]
-            
+            let locationDetails = ["city": LMCity] as [String : Any]
             NotificationCenter.default.post(name: Notification.Name("LocationUpdates"), object: nil, userInfo: locationDetails)
-            
         }
         
     }
@@ -89,19 +82,15 @@ extension LocationManager: CLLocationManagerDelegate {
                startLocation = locations.first
            } else if let location = locations.last {
                traveledDistance += lastLocation.distance(from: location) * 0.000621371
-              // print("Traveled Distance:",  traveledDistance)
-              // print("Straight Distance:", startLocation.distance(from: locations.last!))
            }
            lastLocation = locations.last
            
+           // 10 kms logic implementation
            if traveledDistance > 10.0{
-               callOnce = true
                traveledDistance = 0
                self.locationManager?.startUpdatingLocation()
                return
            } else if traveledDistance <= 0.1{
-            if callOnce! {
-                 callOnce = false
                  let location: AnyObject? = (locations as NSArray).lastObject as AnyObject?
                                
                                self.currentLocation = location as? CLLocation
@@ -121,18 +110,15 @@ extension LocationManager: CLLocationManagerDelegate {
                                    } else {
                                         print("no placemarker")
                                    }
-                               })
+                        })
+                           
                }
-            
-              
-               
-            }
            
        }
 
 }
 
-
+/*
 // MARK: - Get Location
 extension LocationManager {
     
@@ -162,3 +148,4 @@ extension LocationManager {
         }
     }
 }
+ */

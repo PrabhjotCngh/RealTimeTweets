@@ -1,22 +1,28 @@
 PODS:
+  - Alamofire (4.9.1)
   - GoogleMaps (3.3.0):
     - GoogleMaps/Maps (= 3.3.0)
   - GoogleMaps/Base (3.3.0)
   - GoogleMaps/Maps (3.3.0):
     - GoogleMaps/Base
+  - MBProgressHUD (1.1.0)
   - SDWebImage (5.3.2):
     - SDWebImage/Core (= 5.3.2)
   - SDWebImage/Core (5.3.2)
   - Swifter (2.3.0)
 
 DEPENDENCIES:
+  - Alamofire
   - GoogleMaps
+  - MBProgressHUD (~> 1.1.0)
   - SDWebImage
   - Swifter (from `https://github.com/mattdonnelly/Swifter.git`)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - GoogleMaps
+    - MBProgressHUD
     - SDWebImage
 
 EXTERNAL SOURCES:
@@ -29,10 +35,12 @@ CHECKOUT OPTIONS:
     :git: https://github.com/mattdonnelly/Swifter.git
 
 SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   GoogleMaps: cfee83da305b9aaeccf92c24ac79df11c3003492
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   SDWebImage: 6ac2eb96571bff96ecde31a987172c5934a0eb7d
   Swifter: dbdc8b8d35efb46d5a636502545b6dd95eea6285
 
-PODFILE CHECKSUM: 6eb1532826102757e89617214b41e46081cf2f35
+PODFILE CHECKSUM: 29ea4151420143ae68f1c07b9687d1aec3d9fccf
 
 COCOAPODS: 1.8.4

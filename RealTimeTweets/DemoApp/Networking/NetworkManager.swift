@@ -14,6 +14,9 @@ let kConsumerSecretKey  = "tBpnXA0g4UsZNJVgCPuW36YQSvM403j9p3YQE071qrT9LDILxx"
 
 struct NetworkManager {
     
+    static let environment : NetworkEnvironment = .test
+    let router = Router<WebApiType>()
+    
     // Initialise Swifter with API keys
     private var swifter = Swifter(
                  consumerKey: kConsumerAPIKey,
@@ -30,7 +33,7 @@ struct NetworkManager {
         swifter.authorize(withCallback: requestModel.callBackURL!, presentingFrom: viewcontroller, success:{ _, _ in
             
              //Call twitter API before authorization expires
-            self.callTwitterAPIToGetTweets(tweetCount: requestModel.tweetsCount) { (response, error) in
+            self.callTwitterAPIToGetTweets(with: requestModel) { (response, error) in
 
                 guard let readResponse = response else {
                     print("response nil")
@@ -46,13 +49,13 @@ struct NetworkManager {
     }
     
     // MARK: Initialise request to fetch latest tweets
-    func callTwitterAPIToGetTweets(tweetCount: Int, completion: @escaping(_ response: [ResponseModel]?, _ error:String?)->()) {
+    func callTwitterAPIToGetTweets(with model: loginAPIRequestModel, completion: @escaping(_ response: [ResponseModel]?, _ error:String?)->()) {
         
         let initialiseRequestModel = APIRequestModel()
         initialiseRequestModel.apiPath = "statuses/filter.json"
         initialiseRequestModel.baseURL = .stream
-        initialiseRequestModel.params = ["delimited":"100","locations":"-122.75,36.8,-121.75,37.8,-74,40,-73,41"]
-        initialiseRequestModel.requestCounter = tweetCount
+        initialiseRequestModel.params = ["locations":model.boundingBox]
+        initialiseRequestModel.requestCounter = model.tweetsCount
         
         self.fetchStreamTweets(withModel: initialiseRequestModel) { (response, error) in
             guard let handleResponse = response else {
@@ -75,7 +78,7 @@ struct NetworkManager {
             
         }, downloadProgress: { (data, totalBytesReceived, totalBytesExpectedToReceive, response) in
             counter += 1
-            
+            print(counter)
             self.streamTweetsResponseHandlerMethod(responseData: data) { (response, error) in
                 
                 guard let model = response else {
@@ -267,7 +270,61 @@ struct NetworkManager {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
+    //MARK: API call to get polygons from users current location
+    func getPolygons(with params:[String: Any], completion: @escaping(_ polgons: PolygonResponseModel?,_ error:String?)->()) {
+        
+        router.request(.polygonEndPoints(urlParams: params)) { (data, response, error) in
+            /*
+            do {
+                let pollenResponse = try JSONDecoder().decode(polygonResponseModel.self, from: data!)
+                completion(pollenResponse, nil)
+                }
+                catch let error as NSError {
+                  print(error.debugDescription)
+                  completion(nil,error.debugDescription)
+                }
+ */
+            
+            self.polygonResponseHandlerMethod(with: data!) { (response, error) in
+                
+                guard let modelResponse = response else {
+                    print("error")
+                    return
+                }
+                completion(modelResponse,nil)
+            }
+        }
+        
+    }
     
+    // MARK: Latest tweets API response handler method
+    func polygonResponseHandlerMethod(with responseData: Data,completion: @escaping(_ response: PolygonResponseModel?, _ error:String?)->()) {
+       
+         do {
+           // make sure this JSON is in the format we expect
+           if let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? NSArray {
+               // try to read out a string array
+            
+               // Extract main json
+                guard let jsonDict = json[0] as? NSDictionary else {
+                      throw NoKeyFoundError.missing("MainJson")
+                }
+            
+                // Extract boundingbox
+                guard let boundingArray = jsonDict["boundingbox"] as? [String] else {
+                      throw NoKeyFoundError.missing("boundingbox")
+                }
+            
+                
+                let responseModelObj           = PolygonResponseModel()
+                responseModelObj.boundingbox   = boundingArray
+                completion(responseModelObj,nil)
+               }
+            } catch let error as NSError {
+                print("Failed to load: \(error.localizedDescription)")
+                completion(nil,error.localizedDescription)
+            }
+        }
 }
 
 

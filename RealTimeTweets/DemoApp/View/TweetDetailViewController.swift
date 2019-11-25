@@ -22,12 +22,10 @@ class TweetDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Register closure observer method here
         observeEvents()
-                
-        // Do any additional setup after loading the view.
-        
+                        
         // Initialise Table view method
         intialiseTableView()
         
