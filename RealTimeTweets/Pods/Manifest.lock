@@ -1,0 +1,38 @@
+PODS:
+  - GoogleMaps (3.3.0):
+    - GoogleMaps/Maps (= 3.3.0)
+  - GoogleMaps/Base (3.3.0)
+  - GoogleMaps/Maps (3.3.0):
+    - GoogleMaps/Base
+  - SDWebImage (5.3.2):
+    - SDWebImage/Core (= 5.3.2)
+  - SDWebImage/Core (5.3.2)
+  - Swifter (2.3.0)
+
+DEPENDENCIES:
+  - GoogleMaps
+  - SDWebImage
+  - Swifter (from `https://github.com/mattdonnelly/Swifter.git`)
+
+SPEC REPOS:
+  trunk:
+    - GoogleMaps
+    - SDWebImage
+
+EXTERNAL SOURCES:
+  Swifter:
+    :git: https://github.com/mattdonnelly/Swifter.git
+
+CHECKOUT OPTIONS:
+  Swifter:
+    :commit: e02a4657e059a652c1effd9e22910a532d458d8e
+    :git: https://github.com/mattdonnelly/Swifter.git
+
+SPEC CHECKSUMS:
+  GoogleMaps: cfee83da305b9aaeccf92c24ac79df11c3003492
+  SDWebImage: 6ac2eb96571bff96ecde31a987172c5934a0eb7d
+  Swifter: dbdc8b8d35efb46d5a636502545b6dd95eea6285
+
+PODFILE CHECKSUM: 6eb1532826102757e89617214b41e46081cf2f35
+
+COCOAPODS: 1.8.4

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kvg-4T-kEm">
+                                <rect key="frame" x="62" y="417" width="290" height="62"/>
+                                <state key="normal" image="ButtonTwitterNormal">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTouchUpInsideLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l4w-fQ-i9z"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Kvg-4T-kEm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YfV-8l-QV9"/>
+                            <constraint firstItem="Kvg-4T-kEm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="p1a-Rz-n7C"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <segue destination="xBw-0N-yc3" kind="show" identifier="showMap" id="ZSX-tU-keo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="68"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="L1B-Ne-c1d">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="xBw-0N-yc3" customClass="MapViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hMF-7v-zWk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="FBz-OS-kCq"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7pP-16-MIQ"/>
+                    <connections>
+                        <segue destination="arG-Zu-BvR" kind="show" identifier="showTweetDetails" id="aRO-5y-9nN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uf5-c7-UbB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="68"/>
+        </scene>
+        <!--Tweet Detail View Controller-->
+        <scene sceneID="3GJ-Vh-Q8g">
+            <objects>
+                <viewController id="arG-Zu-BvR" customClass="TweetDetailViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="600-5p-qcZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cZc-fo-dXK">
+                                <rect key="frame" x="132" y="20" width="150" height="152"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="152" id="UuS-2C-oKk"/>
+                                    <constraint firstAttribute="width" constant="150" id="a7g-dF-lPT"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="75"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OUB-eZ-mKM">
+                                <rect key="frame" x="0.0" y="191" width="414" height="617"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <inset key="separatorInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIz-S9-VtO">
+                                <rect key="frame" x="20" y="18" width="77" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="77" id="2hA-bp-1H7"/>
+                                    <constraint firstAttribute="height" constant="36" id="MlZ-Ed-FzH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="&lt; Back"/>
+                                <connections>
+                                    <action selector="didTouchUpInsideBackButton:" destination="arG-Zu-BvR" eventType="touchUpInside" id="Lld-mu-jSX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cZc-fo-dXK" firstAttribute="centerX" secondItem="600-5p-qcZ" secondAttribute="centerX" id="DCP-j7-YYf"/>
+                            <constraint firstItem="OUB-eZ-mKM" firstAttribute="bottom" secondItem="hbS-6z-W1G" secondAttribute="bottom" id="ERU-ic-4ri"/>
+                            <constraint firstItem="zIz-S9-VtO" firstAttribute="top" secondItem="hbS-6z-W1G" secondAttribute="top" constant="18" id="MqQ-Mt-HSc"/>
+                            <constraint firstItem="OUB-eZ-mKM" firstAttribute="top" secondItem="cZc-fo-dXK" secondAttribute="bottom" constant="19" id="Pq2-e8-J09"/>
+                            <constraint firstItem="cZc-fo-dXK" firstAttribute="top" secondItem="hbS-6z-W1G" secondAttribute="top" constant="20" id="aYs-XZ-G8S"/>
+                            <constraint firstItem="zIz-S9-VtO" firstAttribute="leading" secondItem="hbS-6z-W1G" secondAttribute="leading" constant="20" id="gNr-J5-guG"/>
+                            <constraint firstItem="OUB-eZ-mKM" firstAttribute="trailing" secondItem="hbS-6z-W1G" secondAttribute="trailing" id="j4X-Z9-Koc"/>
+                            <constraint firstItem="OUB-eZ-mKM" firstAttribute="leading" secondItem="hbS-6z-W1G" secondAttribute="leading" id="n2e-6l-Ep8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hbS-6z-W1G"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="BA0-Vs-Td4"/>
+                    <connections>
+                        <outlet property="detailTableView" destination="OUB-eZ-mKM" id="TZS-vl-DgU"/>
+                        <outlet property="profileImageView" destination="cZc-fo-dXK" id="M1K-l7-eJ9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCr-fS-AzD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1557.9710144927537" y="65.625"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ButtonTwitterNormal" width="290" height="62"/>
+    </resources>
+</document>
