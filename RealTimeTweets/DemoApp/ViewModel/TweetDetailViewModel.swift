@@ -37,6 +37,8 @@ class TweetDetailViewModel : NSObject{
         })
     }
     
+    // MARK: - Private
+    
     private func fetchTweetDetail(withTweet ID: TweetDetailRequestModel,completion: @escaping (_ tweetDetails: TweetDetailResponseModel?, _ error:String?)->()) {
         
         NetworkManager().tweetDetails(withAPI: ID) { (tweetDetailsData, error) in

@@ -15,8 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //Set Key for google maps usage
         GMSServices.provideAPIKey("AIzaSyDywGBPEDIIaNc6OUb6OT2xVssWfYRUzHk")
+        
+        // Start location tracking
         LocationManager.sharedManager.initializeLocationManager()
+        
         return true
     }
 

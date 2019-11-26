@@ -30,7 +30,9 @@ class MapViewModel : NSObject{
         })
 
     }
-    
+     
+    // MARK: - Private
+     
     private func fetchTweets(withAPI model: APIRequestModel,completion: @escaping (_ tweetData: [TweetModel]?, _ error:String?)->()) {
         
         NetworkManager().fetchStreamTweets(withModel: model) { (response, error) in

@@ -72,9 +72,11 @@ class MapViewController: UIViewController {
             }
         }
     }
-    
-    //MARK: - Initialise camera position on the map
-    func intialiseCamerPosition(lat: Double, long: Double) {
+
+    // MARK: - Private
+
+    //Initialise camera position on the map
+    private func intialiseCamerPosition(lat: Double, long: Double) {
            
         let camera = GMSCameraPosition.camera(withLatitude: lat,
                   longitude: long, zoom: 7)
@@ -84,7 +86,7 @@ class MapViewController: UIViewController {
     }
     
     //MARK: - Initialise cluster manager for the map
-    func setupClusterManager(populateData: [ResponseModel])  {
+    private func setupClusterManager(populateData: [ResponseModel])  {
            
         // Set up the cluster manager with default icon generator and renderer.
         let iconGenerator = GMUDefaultClusterIconGenerator()
@@ -102,9 +104,7 @@ class MapViewController: UIViewController {
         clusterManager.setDelegate(self, mapDelegate: self)
            
     }
-       
-    // MARK: - Private
-
+    
     // Generates cluster items from lat, longs within some extent of the camera and adds them to the
     // cluster manager.
     private func generateClusterItems(tweetData: [ResponseModel]) {

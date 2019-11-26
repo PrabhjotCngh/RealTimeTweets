@@ -35,7 +35,13 @@ class TweetDetailViewController: UIViewController {
         viewModelTweet.initialiseTweetDetailAPI(tweetID: tweetModelObj)
     }
     
-    func intialiseTableView()  {
+    // Back button handler method
+    @IBAction func didTouchUpInsideBackButton(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Private
+    private func intialiseTableView()  {
              
            detailTableView?.estimatedRowHeight = 50
            detailTableView?.rowHeight = UITableView.automaticDimension
@@ -49,11 +55,6 @@ class TweetDetailViewController: UIViewController {
            detailTableView?.register(TweetTableViewCell.nib, forCellReuseIdentifier: TweetTableViewCell.identifier)
           
         }
-    
-    // Back button handler method
-    @IBAction func didTouchUpInsideBackButton(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
-    }
     
     // Function to observe various event call backs from the viewmodel as well as Notifications.
     private func observeEvents() {

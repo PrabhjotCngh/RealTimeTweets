@@ -15,11 +15,15 @@ class ViewController: UIViewController,SFSafariViewControllerDelegate {
 
     private var loginViewModel = ViewControllerViewModel ()
     var boundingBoxStr: String?
+    
     override func viewDidLoad() {
            super.viewDidLoad()
             // Register closure observer method
             observeEvents()
+            
+            // Initialise boundingBox String variable
             boundingBoxStr = ""
+        
             // Show loader
             ProgressHud.sharedIndicator.displayPrgressHud(on: self.view)
         
@@ -38,6 +42,7 @@ class ViewController: UIViewController,SFSafariViewControllerDelegate {
                    return
                }
                
+               // Make API request to fetch BoundingBox after getting city name
                let requestModel = [ "q" : setCity, "polygon_geojson" : 0, "format" : "json"] as [String : Any]
                self.loginViewModel.intialiseMethodToGetPolygon(with: requestModel)
 
@@ -49,6 +54,8 @@ class ViewController: UIViewController,SFSafariViewControllerDelegate {
         // First ask user about number of tweets he/she want to fetch from API request
         self.numberOfTweetToFetch()
      }
+    
+    // MARK: - Private
     
     // Function to observe various event call backs from the viewmodel as well as Notifications.
     private func observeEvents() {
@@ -95,12 +102,12 @@ class ViewController: UIViewController,SFSafariViewControllerDelegate {
         }
     }
     
-    func numberOfTweetToFetch() {
+    private func numberOfTweetToFetch() {
        
            self.showAlertFromHome(title: "Please input the number of tweets you want to fetch! \n NOTE: The greater number you will enter, the more time it will take to fetch the real time tweets.", placeholder: "Enter Here...", "Get Tweets!")
-       }
+    }
        
-    func showAlertFromHome(title : String, placeholder : String, _ buttonTitle: String?) {
+    private func showAlertFromHome(title : String, placeholder : String, _ buttonTitle: String?) {
                      
             // create the alert
             let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
@@ -118,7 +125,7 @@ class ViewController: UIViewController,SFSafariViewControllerDelegate {
                             return
                         }
                 
-                        // Take user input and then call API
+                        // Take user input then call API
                         let url = URL(string: "DemoApp://success")!
                         let createRequestModel = loginAPIRequestModel()
                         createRequestModel.callBackURL = url

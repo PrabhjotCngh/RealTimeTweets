@@ -233,7 +233,7 @@ struct NetworkManager {
             userData.profileImageURLHTTPS = profileImageurl
             userData.idStr           = userID
            
-            let responseModelObj = TweetDetailResponseModel()
+            let responseModelObj     = TweetDetailResponseModel()
             responseModelObj.user    = userData
             
             
@@ -274,16 +274,6 @@ struct NetworkManager {
     func getPolygons(with params:[String: Any], completion: @escaping(_ polgons: PolygonResponseModel?,_ error:String?)->()) {
         
         router.request(.polygonEndPoints(urlParams: params)) { (data, response, error) in
-            /*
-            do {
-                let pollenResponse = try JSONDecoder().decode(polygonResponseModel.self, from: data!)
-                completion(pollenResponse, nil)
-                }
-                catch let error as NSError {
-                  print(error.debugDescription)
-                  completion(nil,error.debugDescription)
-                }
- */
             
             self.polygonResponseHandlerMethod(with: data!) { (response, error) in
                 

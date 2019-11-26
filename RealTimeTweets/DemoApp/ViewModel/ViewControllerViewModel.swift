@@ -30,6 +30,8 @@ class ViewControllerViewModel : NSObject{
 
     }
     
+    // MARK: - Private
+    
     private func authoriseUser(with requestModel: loginAPIRequestModel, passViewController: UIViewController,completion: @escaping (_ success: Bool?,_ streamModel: [ResponseModel]?, _ error:String?)->()) {
         
         NetworkManager().login(with: requestModel, viewcontroller: passViewController) { (success, streamTweetData, error) in
@@ -65,7 +67,9 @@ class ViewControllerViewModel : NSObject{
             
         }
     }
-       
+    
+    // MARK: - Private
+    
     private func fetchPolygons(with params: [String: Any], completion: @escaping (_ polygonStr: PolygonResponseModel?, _ error: String?) -> ()) {
          
         NetworkManager().getPolygons(with: params) { (response, error) in
